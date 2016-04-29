@@ -1,0 +1,60 @@
+.top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  text-align:center;
+}
+
+.menu {
+  text-align: center;
+}
+
+h1 {
+  font-family:'Roboto Mono', sans-serif;
+  font-size: 36px;
+  font-weight: 100;
+  text-align: center;
+  color: #fff;
+  /*border: 1px solid #FFF;*/
+  text-decoration: overline;
+}
+
+p {
+  font-family:'Roboto Mono', sans-serif;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 100;
+  text-align: center;
+  color: #fff;
+}
+
+.slug {
+  color:#fff;
+  padding-left:15px;
+  padding-right:15px;
+  display:inline-block;
+  border: 1px solid #FFF;
+}
+
+a {
+  color: #000;
+  font-weight:400;
+  background: #fff;
+  padding:0 3px 0 3px;
+  text-decoration: none;
+}
+
+.nav {
+  padding-left:20px;
+  position:fixed;
+}
+
+span {
+  content: "\2190";
+  font-size:36px;
+}
+
+.nav a {
+  color: #FFF;
+  background:none;  
+}
