@@ -1,0 +1,42 @@
+.bottom {
+  position: fixed;
+  bottom:0;
+  right:0;
+  text-align:left;
+  padding-right:25px;
+  padding-bottom:20px;
+}
+
+h1 {
+  font-family:'Roboto Mono', sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+  color: #000;
+  background-color:#fff;
+  text-decoration: underline;
+}
+
+b {
+  font-weight:400;
+}
+
+p {
+  font-family:'Roboto Mono', sans-serif;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 100;
+  color: #fff;
+}
+
+.slug {
+  color:#fff;
+}
+
+a {
+  color: #000;
+  font-weight:400;
+  background: #fff;
+  text-decoration: none;
+}
+
+
