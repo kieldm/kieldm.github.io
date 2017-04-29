@@ -29,7 +29,7 @@ var y = 0;
 
 var lines;
 
-var myText = ['k','i','e','l','m','.','l','a','n','d'];
+var myText = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight, SVG);
