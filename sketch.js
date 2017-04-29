@@ -156,7 +156,7 @@ function draw() {
     
   push();
     //  center
-    translate(width/2 -((myText.length) * track - track) / 2, height/2 + (ay + asc) / 2);
+    translate(width/2 -((myText.length) * track - track) / 2, height/2 + ay / 2);
   
     fill(255);
   
@@ -240,7 +240,7 @@ function saveSvg() {
 //  background(13, 0, 35);
 
   push();
-  translate(-((myText.length) * track) / 2 + width / 2, (ay + tan(d1) * ax - tan(d1) * ax) / 2 + 50 +  height / 2);
+  translate(width/2 -((myText.length) * track - track) / 2, height/2 + ay / 2);
   
     fill(0);
   
