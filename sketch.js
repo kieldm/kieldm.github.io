@@ -31,6 +31,18 @@ var lines;
 
 var myText = [];
 
+function keyPressed() {
+  if (keyCode == DELETE || keyCode == BACKSPACE) {
+    myText.pop();
+  }
+}
+
+function keyTyped() {
+  if (isNaN(key)) {
+    myText.push(key.toLowerCase());
+  }
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight, SVG);
   background(0);
@@ -240,12 +252,6 @@ function draw() {
   pop();
 }
 
-function keyPressed() {
-  if (keyCode == DELETE || keyCode == BACKSPACE) {
-    myText.splice(myText.length - 1, 1);
-  }
-}
-
 function saveSvg() {
   clear();
 //  background(13, 0, 35);
@@ -318,10 +324,6 @@ function saveSvg() {
   pop();
 
   save();
-}
-
-function keyTyped() {
-  myText.push(key);
 }
 
 //function windowResized() {
