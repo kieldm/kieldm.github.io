@@ -242,7 +242,7 @@ function saveSvg() {
   push();
   translate(-((myText.length) * track) / 2 + width / 2, (ay + tan(d1) * ax - tan(d1) * ax) / 2 + 50 +  height / 2);
   
-    fill(255);
+    fill(0);
   
     for (var i = 0; i < myText.length; i++) {
       if (myText[i] === 'a') {
