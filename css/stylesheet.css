@@ -1,3 +1,7 @@
+body(
+  background: #000;
+}
+
 .bottom {
   position: fixed;
   bottom:0;
