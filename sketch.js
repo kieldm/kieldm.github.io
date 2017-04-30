@@ -156,7 +156,20 @@ function draw() {
     
   push();
     //  center
-    translate(width/2 -((myText.length) * track - track) / 2, height/2 + ay / 2);
+    translate(width/2 -((myText.length) * track - track) / 2, height/2 + ay/ 2);
+  
+    if(myText.length === 0){
+      rectMode(CENTER);
+      noFill();
+      stroke(255);
+      rect(0,0,100,20);
+      noStroke();
+      fill(255);
+      textSize(12);
+      textAlign(CENTER);
+      textStyle(ITALIC);
+      text("enter text",0,4);
+    }
   
     fill(255);
   
@@ -240,8 +253,7 @@ function saveSvg() {
 //  background(13, 0, 35);
 
   push();
-  translate(width/2 -((myText.length) * track - track) / 2, height/2 + ay / 2);
-  
+    translate(width/2 -((myText.length) * track - track) / 2, height/2 + ay/ 2);  
     fill(0);
   
     for (var i = 0; i < myText.length; i++) {
