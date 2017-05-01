@@ -168,7 +168,7 @@ function draw() {
       textSize(12);
       textAlign(CENTER);
       textStyle(ITALIC);
-      text("enter text",0,4);
+      text("TYPE!",0,4);
     }
   
     fill(255);
