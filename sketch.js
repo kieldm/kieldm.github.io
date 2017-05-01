@@ -165,7 +165,7 @@ function draw() {
       fill(0);
       textSize(12);
       textAlign(CENTER);
-      textStyle(ITALIC);
+//      textStyle(ITALIC);
       text("TYPE!",0,4);
     }
   
