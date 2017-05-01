@@ -160,11 +160,9 @@ function draw() {
   
     if(myText.length === 0){
       rectMode(CENTER);
-      noFill();
-      stroke(255);
-      rect(0,0,100,20);
-      noStroke();
       fill(255);
+      rect(0,0,100,20);
+      fill(0);
       textSize(12);
       textAlign(CENTER);
       textStyle(ITALIC);
