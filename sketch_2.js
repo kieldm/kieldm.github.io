@@ -51,13 +51,13 @@ var sl;
 var alph = 0;
 
 var xStart, yStart;
-  
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight, SVG);
 //  background(0);
   angleMode(DEGREES);
-  
+
   xStart = windowWidth/5;
   yStart = windowHeight/5;
 
@@ -74,133 +74,133 @@ function setup() {
       sliderX1 = createSlider(0, 200, 25);
       sliderX1.position(10, 10);
       sliderX1.style('width', '80px');
-    
+
       sliderY1 = createSlider(0, 500, 100);
       sliderY1.position(10, 30);
       sliderY1.style('width', '80px');
-    
+
       sliderC1 = createSlider(0, 200, 50);
       sliderC1.position(10, 50);
       sliderC1.style('width', '80px');
-    
-    
+
+
       sliderD1 = createSlider(0, 60, 30);
       sliderD1.position(windowWidth/5 + 10, 10);
       sliderD1.style('width', '80px');
-    
+
       sliderD2 = createSlider(0, 90, 30);
       sliderD2.position(windowWidth/5 + 10, 30);
       sliderD2.style('width', '80px');
-    
+
       sliderShearX = createSlider(-30, 30, 0);
       sliderShearX.position(windowWidth/5 + 10, 50);
       sliderShearX.style('width', '80px');
-    
-    
+
+
       sliderLap = createSlider(0, 100, 0);
       sliderLap.position(2*windowWidth/5 + 10, 10);
       sliderLap.style('width', '80px');
-    
+
       sliderAsc = createSlider(0, 200, 50);
       sliderAsc.position(2*windowWidth/5 + 10, 30);
       sliderAsc.style('width', '80px');
-    
+
       sliderDesc = createSlider(0, 200, 50);
       sliderDesc.position(2*windowWidth/5 + 10, 50);
       sliderDesc.style('width', '80px');
-    
+
       sliderFlag = createSlider(0, 100, 25);
       sliderFlag.position(2*windowWidth/5 + 10, 70);
       sliderFlag.style('width', '80px');
-    
-    
+
+
       sliderSize = createSlider(0, 30, 10);
       sliderSize.position(3*windowWidth/5 + 10, 10);
       sliderSize.style('width', '80px');
-    
+
       sliderTrack = createSlider(-25, 150, 0);
       sliderTrack.position(3*windowWidth/5 + 10, 30);
       sliderTrack.style('width', '80px');
-    
+
       sliderLead = createSlider(-100, 100, 0);
       sliderLead.position(3*windowWidth/5 + 10, 50);
       sliderLead.style('width', '80px');
-     
-    
+
+
       saveButton = createButton('Save SVG');
       saveButton.position(4*windowWidth/5 + 10, 10);
       saveButton.mousePressed(saveSvg);
-  
-  
+
+
     } else {
       sliderX1 = createSlider(0, 200, 25);
       sliderX1.position(10, 10);
       sliderX1.style('width', sl);
-    
+
       sliderY1 = createSlider(0, 500, 100);
       sliderY1.position(10, 50);
       sliderY1.style('width', sl);
-    
+
       sliderC1 = createSlider(0, 200, 50);
       sliderC1.position(10, 90);
       sliderC1.style('width', sl);
-    
-    
+
+
       sliderD1 = createSlider(0, 60, 30);
       sliderD1.position(10, 130);
       sliderD1.style('width', sl);
-    
+
       sliderD2 = createSlider(0, 90, 30);
       sliderD2.position(10, 170);
       sliderD2.style('width', sl);
-    
+
       sliderShearX = createSlider(-30, 30, 0);
       sliderShearX.position(10, 210);
       sliderShearX.style('width', sl);
-    
-    
+
+
       sliderLap = createSlider(0, 100, 0);
       sliderLap.position(10, 250);
       sliderLap.style('width', sl);
-    
+
       sliderAsc = createSlider(0, 200, 50);
       sliderAsc.position(10, 290);
       sliderAsc.style('width', sl);
-    
+
       sliderDesc = createSlider(0, 200, 50);
       sliderDesc.position(10, 330);
       sliderDesc.style('width', sl);
-    
+
       sliderFlag = createSlider(0, 100, 25);
       sliderFlag.position(10, 370);
       sliderFlag.style('width', sl);
-    
-    
+
+
       sliderSize = createSlider(0, 30, 10);
       sliderSize.position(10, 410);
       sliderSize.style('width', sl);
-    
+
       sliderTrack = createSlider(-25, 150, 0);
       sliderTrack.position(10, 450);
       sliderTrack.style('width', sl);
-    
+
       sliderLead = createSlider(-100, 100, 0);
       sliderLead.position(10, 490);
       sliderLead.style('width', sl);
-     
-    
+
+
       saveButton = createButton('Save SVG');
       saveButton.position(10, 550);
       saveButton.mousePressed(saveSvg);
     }
-
+    
 }
 
 function draw() {
   clear();
-  
+
 //  background(0);
-  background(48,142,255);
+  background(0);
 
   noStroke();
 
@@ -235,34 +235,34 @@ function draw() {
     text("Stroke Width  " + int(ax / ptSize / 2), 100, 22);
     text("X-Height " + int(ay / ptSize / 5), 100, 42);
     text("Arc " + int(c1 / ptSize / 2), 100, 62);
-  
+
     text("Angle 1 " + d1, windowWidth/5 + 100, 22);
     text("Angle 2 " + d2, windowWidth/5 + 100, 42);
     text("Shear " + shrX, windowWidth/5 + 100, 62);
-  
+
     text("Overlap  " + int(lap*100), 2*windowWidth/5 + 100, 22);
     text("Ascender  " + int(asc / ptSize / 2), 2*windowWidth/5 + 100, 42);
     text("Descender  " + int(desc / ptSize / 2), 2*windowWidth/5 + 100, 62);
     text("Flag  " + int(flag / ptSize), 2*windowWidth/5 + 100, 82);
-  
+
     text("Size  " + ptSize * 20, 3*windowWidth/5 + 100, 22);
     text("Tracking  " + track, 3*windowWidth/5 + 100, 42);
     text("Leading  " + lead, 3*windowWidth/5 + 100, 62);
-    
+
   } else {
     text("Stroke Width  " + int(ax / ptSize / 2), 10, 40);
     text("X-Height " + int(ay / ptSize / 5), 10, 80);
     text("Arc " + int(c1 / ptSize / 2), 10, 120);
-  
+
     text("Angle 1 " + d1,10,160);
     text("Angle 2 " + d2, 10,200);
     text("Shear " + shrX, 10,240);
-  
+
     text("Overlap  " + int(lap*100), 10, 280);
     text("Ascender  " + int(asc / ptSize / 2), 10, 320);
     text("Descender  " + int(desc / ptSize / 2), 10, 360);
     text("Flag  " + int(flag / ptSize), 10, 400);
-  
+
     text("Size  " + ptSize * 20, 10, 440);
     text("Tracking  " + track, 10, 480);
     text("Leading  " + lead, 10, 520);
@@ -275,9 +275,9 @@ function draw() {
   // figure out tracking
   track = ax + divX1 - lap*ax;
   lead += asc + ay + 2*divY1 + 2*divY2;
-  
-  inpText = String(inp.value());  
-  
+
+  inpText = String(inp.value());
+
   if(mouseX <= xStart+90 && mouseX >= xStart-190 && mouseY <= yStart+190 && mouseY >= yStart-90 && alph<255){
       alph+=10;
     } else if (alph>0){
@@ -285,20 +285,20 @@ function draw() {
     } else if (alph<0) {
       alph=0;
    }
- 
+
   noFill();
   stroke(255,alph);
   line(xStart-50, yStart+60, xStart-50, yStart+40);
   line(xStart-60, yStart+50, xStart-40, yStart+50);
- 
+
   push();
     // center
     // translate(width/2 -((inpText.length) * track - track) / 2, height/2 + ay/ 2 +asc/2);
     translate(xStart, yStart);
-  
+
     noStroke();
     fill(255);
-  
+
     for (var i = 0; i < inpText.length; i++) {
       if (inpText.charAt(i) === 'a') {
         A();
@@ -429,11 +429,11 @@ function keyPressed() {
 
 function saveSvg() {
   clear();
-  
+
   push();
-    translate(width/2 -((inpText.length) * track - track) / 2, height/2 + ay/ 2);  
+    translate(width/2 -((inpText.length) * track - track) / 2, height/2 + ay/ 2);
     fill(0);
-  
+
     for (var i = 0; i < inpText.length; i++) {
       if (inpText.charAt(i) === 'a') {
         A();
