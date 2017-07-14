@@ -1,7 +1,6 @@
-function H() {
+function capR() {
   push();
   translate(trackCount*track + trackingCount*tracking,0);
-  
     push();
     shearX(shrX);
     
@@ -22,7 +21,7 @@ function H() {
       endShape();
     
       push();
-        translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1   + (lap*divY2));
+        translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1 + (lap*divY2));
       
         beginShape();
         vertex(0, 0);
@@ -36,12 +35,35 @@ function H() {
         vertex(-divX1,-divY1);
         vertex(0, 0);
         endShape();
+  
+        push();
+          translate(0, -asc);
+     
+          beginShape();
+          vertex(0, 0);
+          
+          if(divX1>ax){
+            vertex(0,  asc - ax/tan(d2) - divY2+2);
+            vertex(-ax, asc - ax/tan(d2)+2);
+          } else {
+            vertex(0,  asc - divY1 + tan(d1)*(ax-divX1) - divY2+2);
+            vertex(-ax, asc - divY1 + tan(d1)*(ax-divX1)+2);
+          }
+      
+          vertex(-ax, divY2);
+          vertex(-ax-divX1, divY2 - divY1);
+          vertex(-divX1, -divY1);
+          
+          vertex(0,0);
+          endShape();
+          
+        pop();
+        
       pop();
   
     pop();
-
   pop();
 
-  trackingCount++;
+  trackingCount++;  
   trackCount+=2;
 }

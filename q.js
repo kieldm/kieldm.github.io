@@ -1,31 +1,43 @@
 function Q() {
-  beginShape();
-  vertex(0, 0);
-  vertex(0, -ay);
-  vertex(ax, -ay - tan(d1) * ax);
-  vertex(ax, -tan(d1) * ax);
-  vertex(ax + sin(d2) * c1, -tan(d1) * ax + cos(d2) * c1);
-  vertex(sin(d2) * c1, cos(d2) * c1);
-  vertex(0, 0);
-  endShape();
-
   push();
-    translate(2 * ax + sin(d2) * c1, -ay - 2 * tan(d1) * ax + cos(d2) * c1);
-
-    beginShape();
-    vertex(0, 0);
-    vertex(0, ay+desc+3*tan(d1)*ax - cos(d2)*c1);
-    vertex(sin(d2)*tail,ay+desc+3*tan(d1)*ax - cos(d2)*c1 +cos(d2)*tail);
-    vertex(sin(d2)*tail-ax,ay+desc+4*tan(d1)*ax - cos(d2)*c1 +cos(d2)*tail);
-
-    vertex(-ax, ay + desc + 4 * tan(d1) * ax - cos(d2)*c1);
-    vertex(-ax, tan(d1) * ax);
-    vertex(-ax - sin(d2) * c1, tan(d1) * ax - cos(d2) * c1);
-    vertex(-sin(d2) * c1, -cos(d2) * c1);
+  translate(trackCount*track + trackingCount*tracking,0);
   
-    vertex(0, 0);
-    endShape();
+    push();
+    shearX(shrX);
+    
+      beginShape();
+      vertex(0, 0);
+      vertex(0, -ay);
+      vertex(ax, -ay - divY2);
+      vertex(ax, 0);
+      vertex(ax + divX1, divY1);
+      vertex(divX1, divY1+divY2);
+      vertex(0,divY2);
+      vertex(0,0);
+      endShape();
+    
+      push();
+        translate(2*ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1 + (lap*divY2));
+    
+        beginShape();
+        vertex(0, 0);
+        vertex(0, ay+desc+3*divY2 - divY1 -(lap*divY2));
+        vertex(divX1/2,ay + desc + 3*divY2 - divY1 + divY1/2 -(lap*divY2));
+        vertex(divX1/2 - ax, ay + desc + 4*divY2 - divY1 + divY1/2 - (lap*divY2));
+    
+        vertex(-ax, ay + desc + 4 * divY2 - divY1-(lap*divY2));
+        vertex(-ax, divY2);
+        vertex(-ax - divX1, divY2 - divY1);
+        vertex(-divX1, -divY1);
+      
+        vertex(0, 0);
+        endShape();
+      pop();
+      
+    pop();
+
   pop();
 
-  translate(track, 0);
+  trackingCount++;
+  trackCount+=2;
 }

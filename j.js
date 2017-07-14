@@ -1,36 +1,43 @@
 function J() {
-
-  beginShape();
-  vertex(0, 0);
-  vertex(0, -ay);
-  vertex(-sin(d2) * c1/2, -ay - cos(d2) * c1/2);
-  vertex(-sin(d2) * c1/2 + ax, -ay - cos(d2) * c1/2 - tan(d1) * ax);
-  vertex(ax, -ay - tan(d1) * ax);
-  vertex(ax, tan(d1) * ax + desc);
-  vertex(0, 2*tan(d1)*ax+desc)
-  vertex(0, 0);
-  endShape();
-
-  ///dot
-  beginShape();
-  vertex(0, -ay-asc/2);
-  vertex(-sin(d2) * c1/2, -ay-asc/2 - cos(d2) * c1/2);
-  vertex(-sin(d2) * c1/2 + ax, -ay-asc/2 - cos(d2) * c1/2 - tan(d1) * ax);
-  vertex(ax, -ay-asc/2 - tan(d1) * ax);
-  vertex(0, -ay-asc/2);
-  endShape();
-
-  ///tail
   push();
-    translate(0,2*tan(d1)*ax+desc);
-    beginShape();
-    vertex(0,0);
-    vertex(-sin(d2)*flag,-cos(d2)*flag);
-    vertex(-sin(d2)*flag-ax,-cos(d2)*flag+tan(d1)*ax);
-    vertex(-ax,tan(d1)*ax)
-    vertex(0,0);
-    endShape();
+  translate(trackCount*track + trackingCount*tracking,0);
+  
+    push();
+    shearX(shrX);
+    
+      beginShape();
+      vertex(0, 0);
+      vertex(0, -ay);
+      vertex(ax, -ay - divY2);
+      vertex(ax, divY2 + desc);
+      vertex(0, 2*divY2+desc)
+      vertex(0, 0);
+      endShape();
+    
+      ///dot
+      beginShape();
+      vertex(0, -ay-asc/2);
+      vertex(-divY2/2, -ay-asc/2 - divY1/2);
+      vertex(-divY2/2 + ax, -ay-asc/2 - divY1/2 - divY2);
+      vertex(ax, -ay-asc/2 - divY2);
+      vertex(0, -ay-asc/2);
+      endShape();
+    
+      ///tail
+      push();
+        translate(0,2*divY2+desc);
+        beginShape();
+        vertex(0,0);
+        vertex(-sin(d2)*flag,-cos(d2)*flag);
+        vertex(-sin(d2)*flag-ax,-cos(d2)*flag+divY2);
+        vertex(-ax,divY2)
+        vertex(0,0);
+        endShape();
+      pop();
+  
+    pop();
   pop();
 
-  translate(track-ax - sin(d2) * c1, 0);
+  trackingCount++;
+  trackCount+=1;
 }
