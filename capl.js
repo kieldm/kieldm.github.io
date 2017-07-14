@@ -1,7 +1,6 @@
-function B() {
+function capL() {
   push();
   translate(trackCount*track + trackingCount*tracking,0);
-
     push();
     shearX(shrX);
     
@@ -20,23 +19,21 @@ function B() {
       endShape();
     
       push();
-        translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1 + (lap*divY2));
-      
+        translate(2 * ax + divX1 - (lap*ax), -ay - asc - 2 * divY2 + divY1 + (lap*divY2));
+  
         beginShape();
-        vertex(0, 0);
-        vertex(0, ay + divY2);
-        vertex(-ax, ay + 2 * divY2);
-        vertex(-ax, divY2);
-        vertex(-ax - divX1, divY2 - divY1);
-        vertex(-divX1, -divY1);
-        vertex(0,0);
+        vertex(0, asc+ay/2);
+        vertex(0, ay + asc + divY2);
+        vertex(-ax,ay + asc + 2 * divY2);
+    
+        vertex(-ax, asc+ay/2 + divY2);
+        vertex(0,asc+ay/2);
         endShape();
       pop();
   
     pop();
-
   pop();
-  
+
   trackingCount++;
-  trackCount +=2;
+  trackCount+=2;
 }

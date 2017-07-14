@@ -1,52 +1,60 @@
 function S() {
-
+  push();
+  translate(trackCount*track + trackingCount*tracking,0);
     push();
-      translate(0,(-ay-2*tan(d1)*ax+cos(d2)*c1)/2);
+    shearX(shrX);
+  
+      push();
+        translate(-(lap*ax)/2,(-ay-2*divY2+divY1+(lap*divY2))/2);
+        
+        beginShape();
+        vertex(0,                       -(-divY2 + (ax+divX1)/tan(d2))/2);
+        
+        if( (-(-ay-2*divY2+divY1)/2-ay-divY2) < (-(-divY2 + (ax+divX1)/tan(d2))/2-divY2)){
+          vertex(0,-(-ay-2*divY2+divY1)/2-ay);
+          vertex(ax,-(-ay-2*divY2+divY1)/2-ay-divY2);
+        }
+        
+        vertex(ax,                      -(-divY2 + (ax+divX1)/tan(d2))/2-divY2);
+        vertex(2*ax + divX1,     -(-divY2 + (ax+divX1)/tan(d2))/2-divY2 + (ax+divX1)/tan(d2));
+        
+        if( (-(-ay-2*divY2+divY1)/2+divY1-2*divY2) > -(-divY2 + (ax+divX1)/tan(d2))/2-divY2 + (ax+divX1)/tan(d2) -divY2){
+          vertex(2*ax+divX1,-(-ay-2*divY2+divY1)/2+divY1-divY2);
+          vertex(ax + divX1,-(-ay-2*divY2+divY1)/2+divY1);
+        }
+        
+        vertex(ax+divX1,         -(-divY2 + (ax+divX1)/tan(d2))/2+(ax+divX1)/tan(d2));
+        
+        vertex(0,                       -(-divY2 + (ax+divX1)/tan(d2))/2);
+        endShape();
+      pop();
+  
+      push();
+        translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1   + (lap*divY2));
+    
+        beginShape();
+        vertex(0, 0);
+        vertex(-ax, divY2);
+        vertex(-ax - divX1, divY2 - divY1);
+        vertex(-divX1, -divY1);
+        vertex(0, 0);
+        endShape();
+      pop();
+    
+      push();
+        translate(0,divY2);
+        beginShape();
+        vertex(0,0);
+        vertex(ax, -divY2);
+        vertex(ax + divX1, -divY2 + divY1);
+        vertex(divX1, divY1);
+        vertex(0, 0);
+        endShape();
+      pop();
       
-      beginShape();
-      vertex(0,                       -(-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2))/2);
-      
-      if( (-(-ay-2*tan(d1)*ax+cos(d2)*c1)/2-ay-tan(d1)*ax) < (-(-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2))/2-tan(d1) * ax)){
-        vertex(0,-(-ay-2*tan(d1)*ax+cos(d2)*c1)/2-ay);
-        vertex(ax,-(-ay-2*tan(d1)*ax+cos(d2)*c1)/2-ay-tan(d1)*ax);
-      }
-      
-      vertex(ax,                      -(-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2))/2-tan(d1) * ax);
-      vertex(2*ax + sin(d2) * c1,     -(-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2))/2-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2));
-      
-      if( (-(-ay-2*tan(d1)*ax+cos(d2)*c1)/2+cos(d2)*c1-2*tan(d1)*ax) > -(-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2))/2-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2) -tan(d1)*ax){
-        vertex(2*ax+sin(d2)*c1,-(-ay-2*tan(d1)*ax+cos(d2)*c1)/2+cos(d2)*c1-tan(d1)*ax);
-        vertex(ax + sin(d2) * c1,-(-ay-2*tan(d1)*ax+cos(d2)*c1)/2+cos(d2)*c1);
-      }
-      
-      vertex(ax+sin(d2) * c1,         -(-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2))/2+(ax+sin(d2)*c1)/tan(d2));
-      
-      vertex(0,                       -(-tan(d1) * ax + (ax+sin(d2)*c1)/tan(d2))/2);
-      endShape();
     pop();
-
-  push();
-    translate(2 * ax + sin(d2) * c1, -ay - 2 * tan(d1) * ax + cos(d2) * c1);
-
-    beginShape();
-    vertex(0, 0);
-    vertex(-ax, tan(d1) * ax);
-    vertex(-ax - sin(d2) * c1, tan(d1) * ax - cos(d2) * c1);
-    vertex(-sin(d2) * c1, -cos(d2) * c1);
-    vertex(0, 0);
-    endShape();
   pop();
 
-  push();
-    translate(0,tan(d1) * ax);
-    beginShape();
-    vertex(0,0);
-    vertex(ax, -tan(d1) * ax);
-    vertex(ax + sin(d2) * c1, -tan(d1) * ax + cos(d2) * c1);
-    vertex(sin(d2) * c1, cos(d2) * c1);
-    vertex(0, 0);
-    endShape();
-  pop();
-
-  translate(track, 0);
+  trackingCount++;
+  trackCount+=2;  
 }

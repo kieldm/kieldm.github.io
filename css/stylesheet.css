@@ -1,7 +1,3 @@
-body {
-  background: #000;
-}
-
 .bottom {
   position: fixed;
   bottom:0;
@@ -13,11 +9,24 @@ body {
 
 h1 {
   font-family:'Roboto Mono', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 100;
+  text-align:center;
   color: #000;
   background-color:#fff;
   text-decoration: underline;
+}
+
+h2 {
+  font-family:'Roboto Mono', sans-serif;
+  font-size: 8px;
+  font-style: italic;
+  font-weight: 100;
+  text-align: center;
+  letter-spacing: 5px;
+  color: #fff;
+  margin-top:-6px;
+  text-transform:uppercase;
 }
 
 b {
@@ -27,7 +36,6 @@ b {
 p {
   font-family:'Roboto Mono', sans-serif;
   font-size: 10px;
-  font-style: italic;
   font-weight: 100;
   color: #fff;
 }

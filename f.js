@@ -1,38 +1,49 @@
 function F() {
-
-  beginShape();
-  vertex(0, 0);
-  vertex(0, -ay - asc);
-  vertex(ax, -ay - asc - tan(d1) * ax);
-  vertex(ax, desc+tan(d1)*ax);
-  vertex(ax+sin(d2)*tail,desc+cos(d2)*tail+tan(d1)*ax);
-  vertex(sin(d2)*tail,desc+cos(d2)*tail+2*tan(d1)*ax);
-  vertex(0, desc+2*tan(d1)*ax);
-  vertex(0,0);
-  endShape();
-
+  push();
+  translate(trackCount*track + trackingCount*tracking,0);
   
-  push();
-    translate(ax, -ay - asc - tan(d1) * ax);
-
-    beginShape();
-    vertex(0, 0);
-//    vertex(0, asc/4);
-//    vertex(-ax, asc/4 + tan(d1) * ax);
-    vertex(ax, -tan(d1)*ax);
-    vertex(ax +sin(d2) * flag, -tan(d1) * ax + cos(d2) * flag);
-    vertex(sin(d2) * flag, cos(d2) * flag);
-    vertex(0,0);
-    endShape();
+    push();
+    shearX(shrX);
     
+      beginShape();
+      vertex(0, 0);
+      vertex(0, -ay - asc);
+      vertex(ax, -ay - asc - divY2);
+      
+      vertex(ax, divY1/2);
+      vertex(ax + divX1/2, divY1);
+      vertex(divX1/2, divY1+divY2);
+      vertex(0,divY1/2 + divY2);
+      
+      vertex(0, 0);
+      endShape();
+    
+      push();
+        translate(ax, -ay - asc - divY2);
+    
+        beginShape();
+        vertex(0, 0);
+        vertex(ax, -divY2);
+        vertex(ax + divX1/2, -divY2 + divY1/2);
+        vertex(ax + divX1/2, -divY2 + divY1/2 + asc/5);
+        vertex(divX1/2, divY1/2 + asc/5);
+        vertex(divX1/2, divY1/2);
+        vertex(0,0);
+        endShape();
+        
+      pop();
+    
+      push();
+        translate(ax/2,-ay-asc/2);
+    //    rotate(-d1);
+        rectMode(CENTER);
+        rect(0,0,1.5*ax,ax);
+      pop();
+  
+    pop();
   pop();
 
-  push();
-    translate(ax/2,-ay-asc/2);
-    rotate(-d1);
-    rectMode(CENTER);
-    rect(0,0,ax+c1,ax/2);
-  pop();
+  trackingCount++;
+  trackCount +=1;
 
-  translate(track-ax/2 - sin(d2) * c1, 0);
 }
