@@ -9,12 +9,13 @@ function X() {
   
       push();
         translate(0,(-ay-2*divY2 + divY1)/2);
+        
         beginShape();
         vertex(0,                       -(-divY2 + (ax+divX1)/tan(d2))/2);
   
        if( (-(-ay-2*divY2+divY1)/2-ay - divY2) < (-(-divY2 + (ax+divX1)/tan(d2))/2 - divY2)){
-            vertex(0,-(-ay - 2*divY2 + divY1)/2-ay);
-            vertex(ax,-(-ay - 2*divY2 + divY1)/2-ay-divY2);
+            vertex(0,-(-ay - 2*divY2 + divY1)/2-ay- divY2);
+            vertex(ax,-(-ay - 2*divY2 + divY1)/2-ay-2*divY2);
           }
         
         vertex(ax,                      -(-divY2 + (ax+divX1)/tan(d2))/2 - divY2);
@@ -43,8 +44,8 @@ function X() {
           translate(ax+divX1,0);
           beginShape();
           vertex(0,0);
-          vertex(0,-(-ay-2*divY2+divY1)/2-ay);
-          vertex(ax,-(-ay-2*divY2+divY1)/2-ay-divY2);
+          vertex(0,-(-ay-2*divY2+divY1)/2-ay - divY2);
+          vertex(ax,-(-ay-2*divY2+divY1)/2-ay - 2*divY2);
           vertex(ax,-divY2);
           vertex(0,0);
           endShape();

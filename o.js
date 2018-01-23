@@ -1,4 +1,5 @@
 function O() {
+    
   push();
   translate(trackCount*track + trackingCount*tracking,0);
   
@@ -8,26 +9,51 @@ function O() {
       beginShape();
       vertex(0, 0);
       vertex(0, -ay);
-      vertex(ax, -ay - tan(d1) * ax);
+      vertex(ax, -ay - divY2);
       vertex(ax, 0);
-      vertex(ax + sin(d2) * c1, cos(d2) * c1);
-      vertex(sin(d2) * c1, cos(d2) * c1+tan(d1)*ax);
-      vertex(0,tan(d1)*ax)
+      vertex(ax + divX1, divY1);
+      vertex(divX1, divY1 + divY2);
+      vertex(0, divY2)
       vertex(0, 0);
       endShape();
+
+      //bar
+      push();
+        translate(divX1, divY1 + divY2);
+        beginShape();
+        vertex(0,0);
+        vertex(bx, -divY3);
+        vertex(bx - divX2, -divY3 - divY4);
+        vertex(-divX2, - divY4);
+        vertex(0,0);
+        endShape();
+      pop();
     
       push();
-        translate(2 * ax + sin(d2) * c1 - (lap*ax), -ay - 2 * tan(d1) * ax + cos(d2) * c1   + (lap*tan(d1)*ax));
+        translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1 + (lap*divY2));
     
         beginShape();
         vertex(0, 0);
-        vertex(0, ay+tan(d1)*ax);
-        vertex(-ax, ay + 2*tan(d1) * ax);
-        vertex(-ax, tan(d1) * ax);
-        vertex(-ax - sin(d2) * c1, tan(d1) * ax - cos(d2) * c1);
-        vertex(-sin(d2) * c1, -cos(d2) * c1);
+        vertex(0, ay + divY2);
+        vertex(-ax, ay + 2*divY2);
+        vertex(-ax, divY2);
+        vertex(-ax - divX1, divY2 - divY1);
+        vertex(-divX1, -divY1);
         vertex(0, 0);
         endShape();
+    
+         //bar
+         push();
+         translate(-divX1, -divY1);
+            beginShape();
+            vertex(0,0);
+            vertex(-bx, divY3);
+            vertex(-bx + divX2, divY3 + divY4);
+            vertex(divX2, divY4);
+            vertex(0,0);
+            endShape();
+         pop();
+    
       pop();
   
     pop();

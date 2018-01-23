@@ -8,10 +8,10 @@ function capR() {
       vertex(0, 0);
       vertex(0, -ay - asc);
       
-      vertex(-sin(d2) * flag, -ay - asc - cos(d2) * flag);
-      vertex(-sin(d2) * flag + ax, -ay - asc - cos(d2) * flag - tan(d1) * ax);
+      vertex(-divX1/2, -ay - asc - divY1/2);
+      vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
       
-      vertex(ax, -ay - asc - tan(d1) * ax);
+      vertex(ax, -ay - asc - divY2);
       
       vertex(ax, divY1/2);
       vertex(ax + divX1/2, divY1);
@@ -35,10 +35,21 @@ function capR() {
         vertex(-divX1,-divY1);
         vertex(0, 0);
         endShape();
-  
+
+         //bar
+         push();
+         translate(-divX1, -divY1);
+            beginShape();
+            vertex(0,0);
+            vertex(-bx, divY3);
+            vertex(-bx + divX2, divY3 + divY4);
+            vertex(divX2, divY4);
+            vertex(0,0);
+            endShape();
+         pop();
+    
         push();
           translate(0, -asc);
-     
           beginShape();
           vertex(0, 0);
           
@@ -57,6 +68,18 @@ function capR() {
           vertex(0,0);
           endShape();
           
+         //bar
+         push();
+         translate(-divX1, -divY1);
+            beginShape();
+            vertex(0,0);
+            vertex(-bx, divY3);
+            vertex(-bx + divX2, divY3 + divY4);
+            vertex(divX2, divY4);
+            vertex(0,0);
+            endShape();
+         pop();
+    
         pop();
         
       pop();

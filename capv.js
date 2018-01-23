@@ -15,6 +15,18 @@ function capV() {
       vertex(0,divY2)
       vertex(0,0);
       endShape();
+
+      //bar
+      push();
+        translate(divX1, divY1 + divY2);
+        beginShape();
+        vertex(0,0);
+        vertex(bx, -divY3);
+        vertex(bx - divX2, -divY3 - divY4);
+        vertex(-divX2, - divY4);
+        vertex(0,0);
+        endShape();
+      pop();
     
       push();
         translate( ax + divX1 - (lap*ax), 0);

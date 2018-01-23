@@ -12,8 +12,8 @@ h1 {
   font-size: 18px;
   font-weight: 100;
   text-align:center;
-  color: #000;
-  background-color:#fff;
+  color: #fff;
+  background-color:#000;
   text-decoration: underline;
 }
 
@@ -21,10 +21,10 @@ h2 {
   font-family:'Roboto Mono', sans-serif;
   font-size: 8px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   text-align: center;
   letter-spacing: 5px;
-  color: #fff;
+  color: #000;
   margin-top:-6px;
   text-transform:uppercase;
 }
@@ -36,18 +36,18 @@ b {
 p {
   font-family:'Roboto Mono', sans-serif;
   font-size: 10px;
-  font-weight: 100;
-  color: #fff;
+  font-weight: 300;
+  color: #000;
 }
 
 .slug {
-  color:#fff;
+  color:#0000FF;
 }
 
 a {
-  color: #000;
+  color: #FFF;
   font-weight:400;
-  background: #fff;
+  background: #000;
   text-decoration: none;
 }
 

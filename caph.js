@@ -7,8 +7,8 @@ function capH() {
       beginShape();
       vertex(0, 0);
       vertex(0, -ay - asc);
-      vertex(-sin(d2) * flag, -ay - asc - cos(d2) * flag);
-      vertex(-sin(d2) * flag + ax, -ay - asc - cos(d2) * flag - divY2);
+      vertex(-divX1/2, -ay - asc - divY1/2);
+      vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
     
       vertex(ax, -ay - asc - divY2);
   
@@ -25,8 +25,8 @@ function capH() {
         beginShape();
         vertex(0, 0);
         vertex(0, -ay - asc);
-        vertex(-sin(d2) * flag, -ay - asc - cos(d2) * flag);
-        vertex(-sin(d2) * flag + ax, -ay - asc - cos(d2) * flag - divY2);
+        vertex(-divX1/2, -ay - asc - divY1/2);
+        vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
       
         vertex(ax, -ay - asc - divY2);
         vertex(ax,- divY2 + divY1);
@@ -85,7 +85,7 @@ function capH() {
       push();
         translate((2 * ax + divX1 - (lap*ax))/2,(-asc-ay)/2);
         rectMode(CENTER);
-        rect(0,0,2 * ax + divX1- (lap*ax),ax/2);
+        rect(0,0,2 * ax + divX1- (lap*ax),ax);
       pop();
   
     pop();

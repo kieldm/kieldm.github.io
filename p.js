@@ -9,8 +9,8 @@ function P() {
       vertex(0, 0);
       vertex(0, -ay);
       
-      vertex(-sin(d2) * flag, -ay - cos(d2) * flag);
-      vertex(-sin(d2) * flag + ax, -ay - cos(d2) * flag - divY2);
+      vertex(-divX1/2, -ay - divY1/2);
+      vertex(-divX1/2 + ax, -ay - divY1/2 - divY2);
     
       vertex(ax, -ay-divY2);
       vertex(ax, 0);
@@ -19,6 +19,18 @@ function P() {
       vertex(0,divY2);
       vertex(0, 0);
       endShape();
+    
+      //bar
+      push();
+        translate(divX1, divY1 + divY2);
+        beginShape();
+        vertex(0,0);
+        vertex(bx, -divY3);
+        vertex(bx - divX2, -divY3 - divY4);
+        vertex(-divX2, - divY4);
+        vertex(0,0);
+        endShape();
+      pop();
     
       push();
         translate(0,divY2);
@@ -47,6 +59,19 @@ function P() {
         vertex(-divX1, -divY1);
         vertex(0, 0);
         endShape();
+    
+          //bar
+          push();
+            translate(-divX1, -divY1);
+            beginShape();
+            vertex(0,0);
+            vertex(-bx, divY3);
+            vertex(-bx + divX2, divY3 + divY4);
+            vertex(divX2, divY4);
+            vertex(0,0);
+            endShape();
+          pop();
+    
       pop();
   
     pop();

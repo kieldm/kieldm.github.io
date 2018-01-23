@@ -9,8 +9,8 @@ function I() {
       vertex(0, 0);
       vertex(0, -ay);
       
-      vertex(-sin(d2) * flag, -ay - cos(d2) * flag);
-      vertex(-sin(d2) * flag + ax, -ay - cos(d2) * flag - divY2);
+      vertex(-divX1/2, -ay - divY1/2);
+      vertex(-divX1/2 + ax, -ay - divY1/2 - divY2);
       
       vertex(ax, -ay - divY2);
       
@@ -22,11 +22,11 @@ function I() {
       endShape();
       
       beginShape();
-      vertex(0, -ay-asc/2);
-      vertex(-divX1/2, -ay-asc/2 - divY1/2);
-      vertex(-divX1/2 + ax, -ay-asc/2 - divY1/2 - divY2);
-      vertex(ax, -ay-asc/2 - divY2);
-      vertex(0, -ay-asc/2);
+      vertex(0, -ay - asc/2);
+      vertex(0, -ay - asc/2 - divY1);
+      vertex(ax, -ay - asc/2 - divY1 - divY2);
+      vertex(ax, -ay - asc/2 - divY2);
+      vertex(0, -ay - asc/2);
       endShape();
   
     pop();
