@@ -2,26 +2,35 @@
 var sliderX1, sliderY1, sliderC1;
 var ax, ay, c1;
 
+var sliderX2, sliderC2;
+var bx, c2;
+
 //equation vars
-var divX1, divY1, divY2
+var divX1, divY1, divY2;
+
+//equation vars
+var divX2, divY3, divY4;
 
 //angles
 var sliderD1, sliderD2;
 var d1, d2;
 
 //specs
-var sliderAsc, sliderDesc, sliderTail, sliderFlag;
-var asc, desc, tail, flag;
+var sliderAsc, sliderDesc, sliderTail;
+var asc, desc, tail;
 
 //tracking
 var sliderTrack, sliderSize;
 var track, ptSize;
 
+var tracking;
+var trackingCount;
+
 var sliderLead;
 var lead;
 
 var trackCount;
-//var leadCount;
+var lb_count;
 
 //overlap
 var sliderLap;
@@ -42,81 +51,162 @@ var inp;
 var inpText;
 var myText = [];
 
+var sliderLength;
+var sl;
+
+var alph = 0;
+
+var xStart, yStart;
+
 function setup() {
   createCanvas(windowWidth, windowHeight, SVG);
 //  background(0);
   angleMode(DEGREES);
+
+  xStart = windowWidth/10;
+//  xStart = windowWidth/6;
+  yStart = 3*windowHeight/5;
 
   inp = select("#textfield");
 
 //  inp = createInput('ZAS');
 //  inp.position(10,windowHeight-50);
 
-  sliderSize = createSlider(0, 30, 10);
-  sliderSize.position(10, 10);
-  sliderSize.style('width', '80px');
+  sliderLength = windowWidth-40;
+  sl = sliderLength.toString()+'px';
 
-  sliderX1 = createSlider(0, 200, 25);
-  sliderX1.position(10, 30);
-  sliderX1.style('width', '80px');
 
-  sliderY1 = createSlider(0, 500, 100);
-  sliderY1.position(10, 50);
-  sliderY1.style('width', '80px');
-
-  sliderC1 = createSlider(0, 200, 50);
-  sliderC1.position(10, 70);
-  sliderC1.style('width', '80px');
-
-  sliderD1 = createSlider(0, 60, 30);
-  sliderD1.position(10, 90);
-  sliderD1.style('width', '80px');
-
-  sliderD2 = createSlider(0, 90, 30);
-  sliderD2.position(10, 110);
-  sliderD2.style('width', '80px');
-
-  sliderShearX = createSlider(-30, 30, 0);
-  sliderShearX.position(10, 130);
-  sliderShearX.style('width', '80px');
-
-  sliderAsc = createSlider(0, 200, 50);
-  sliderAsc.position(200, 10);
-  sliderAsc.style('width', '80px');
-
-  sliderDesc = createSlider(0, 200, 50);
-  sliderDesc.position(200, 30);
-  sliderDesc.style('width', '80px');
-
-  sliderTail = createSlider(0, 100, 25);
-  sliderTail.position(200, 50);
-  sliderTail.style('width', '80px');
-
-  sliderFlag = createSlider(0, 100, 25);
-  sliderFlag.position(200, 70);
-  sliderFlag.style('width', '80px');
-
-  sliderLap = createSlider(0, 100, 0);
-  sliderLap.position(200, 90);
-  sliderLap.style('width', '80px');
-
-  sliderTrack = createSlider(-25, 150, 0);
-  sliderTrack.position(200, 110);
-  sliderTrack.style('width', '80px');
-
-  sliderLead = createSlider(-100, 100, 0);
-  sliderLead.position(200, 130);
-  sliderLead.style('width', '80px');
-
-  saveButton = createButton('Save SVG');
-  saveButton.position(390, 10);
-  saveButton.mousePressed(saveSvg);
-
+//  if(windowWidth>500){
+      sliderX1 = createSlider(0, 200, 25);
+      sliderX1.position(10, 10);
+      sliderX1.style('width', '80px');
+    
+      sliderY1 = createSlider(0, 500, 100);
+      sliderY1.position(10, 30);
+      sliderY1.style('width', '80px');
+    
+      sliderD1 = createSlider(0, 60, 30);
+      sliderD1.position(10, 50);
+      sliderD1.style('width', '80px');
+    
+      sliderD2 = createSlider(0, 90, 45);
+      sliderD2.position(10, 70);
+      sliderD2.style('width', '80px');
+    
+    
+      sliderC1 = createSlider(0, 200, 50);
+      sliderC1.position(windowWidth/5 + 10, 10);
+      sliderC1.style('width', '80px');
+    
+      sliderX2 = createSlider(0, 100, 0);
+      sliderX2.position(windowWidth/5 + 10, 30);
+      sliderX2.style('width', '80px');
+    
+      sliderC2 = createSlider(0, 100, 20);
+      sliderC2.position(windowWidth/5 + 10, 50);
+      sliderC2.style('width', '80px');
+    
+    
+      sliderLap = createSlider(-100, 100, 0);
+      sliderLap.position(2*windowWidth/5 + 10, 10);
+      sliderLap.style('width', '80px');
+    
+      sliderAsc = createSlider(0, 200, 50);
+      sliderAsc.position(2*windowWidth/5 + 10, 30);
+      sliderAsc.style('width', '80px');
+    
+      sliderDesc = createSlider(0, 200, 50);
+      sliderDesc.position(2*windowWidth/5 + 10, 50);
+      sliderDesc.style('width', '80px');
+    
+    
+      sliderSize = createSlider(0, 20, 10);
+      sliderSize.position(3*windowWidth/5 + 10, 10);
+      sliderSize.style('width', '80px');
+    
+      sliderTrack = createSlider(-25, 150, 0);
+      sliderTrack.position(3*windowWidth/5 + 10, 30);
+      sliderTrack.style('width', '80px');
+    
+      sliderLead = createSlider(-100, 100, 0);
+      sliderLead.position(3*windowWidth/5 + 10, 50);
+      sliderLead.style('width', '80px');
+    
+      sliderShearX = createSlider(-30, 30, 0);
+      sliderShearX.position(3*windowWidth/5 + 10, 70);
+      sliderShearX.style('width', '80px');
+     
+    
+      saveButton = createButton('Save SVG');
+      saveButton.position(4*windowWidth/5 + 10, 10);
+      saveButton.mousePressed(saveSvg);
+  
+  
+/*    } else {
+      sliderX1 = createSlider(0, 200, 25);
+      sliderX1.position(10, 10);
+      sliderX1.style('width', sl);
+    
+      sliderY1 = createSlider(0, 500, 100);
+      sliderY1.position(10, 50);
+      sliderY1.style('width', sl);
+    
+      sliderC1 = createSlider(0, 200, 50);
+      sliderC1.position(10, 90);
+      sliderC1.style('width', sl);
+    
+    
+      sliderD1 = createSlider(0, 60, 30);
+      sliderD1.position(10, 130);
+      sliderD1.style('width', sl);
+    
+      sliderD2 = createSlider(0, 90, 30);
+      sliderD2.position(10, 170);
+      sliderD2.style('width', sl);
+    
+      sliderShearX = createSlider(-30, 30, 0);
+      sliderShearX.position(10, 210);
+      sliderShearX.style('width', sl);
+    
+    
+      sliderLap = createSlider(0, 100, 0);
+      sliderLap.position(10, 250);
+      sliderLap.style('width', sl);
+    
+      sliderAsc = createSlider(0, 200, 50);
+      sliderAsc.position(10, 290);
+      sliderAsc.style('width', sl);
+    
+      sliderDesc = createSlider(0, 200, 50);
+      sliderDesc.position(10, 330);
+      sliderDesc.style('width', sl);
+    
+    
+      sliderSize = createSlider(0, 20, 10);
+      sliderSize.position(10, 410);
+      sliderSize.style('width', sl);
+    
+      sliderTrack = createSlider(-25, 150, 0);
+      sliderTrack.position(10, 450);
+      sliderTrack.style('width', sl);
+    
+      sliderLead = createSlider(-100, 100, 0);
+      sliderLead.position(10, 490);
+      sliderLead.style('width', sl);
+     
+    
+      saveButton = createButton('Save SVG');
+      saveButton.position(10, 550);
+      saveButton.mousePressed(saveSvg);
+    }
+*/
 }
 
 function draw() {
   clear();
-  background(0);
+  
+//  background(0);
+  background(255);
 
   noStroke();
 
@@ -127,57 +217,95 @@ function draw() {
   d1 = sliderD1.value();
   d2 = sliderD2.value();
 
+    
   shrX = sliderShearX.value();
 
   asc = ptSize * sliderAsc.value() * 2;
   desc = ptSize * sliderDesc.value() * 2;
-  tail = ptSize * sliderTail.value();
-  flag = ptSize * sliderFlag.value();
+//  tail = ptSize * sliderTail.value();
 
   lap = sliderLap.value()/100;
 
-  track = sliderTrack.value();
+  bx = map(sliderX2.value(), 0, 100, ax, -(lap*ax) + 2*ax);
+  c2 = map(sliderC2.value(), 0, 100, 0, c1);
+    
+  tracking = sliderTrack.value();
   lead = sliderLead.value();
   ptSize = sliderSize.value() / 20;
 
   trackCount = 0;
+  trackingCount = 0;
+  lb_count = 0;
 
-  fill(255);
+  fill(0);
   textSize(8);
 
-  text("Size  " + ptSize * 20, 100, 22);
-  text("Stroke Width  " + int(ax / ptSize / 2), 100, 42);
-  text("X-Height " + int(ay / ptSize / 5), 100, 62);
-  text("Arc " + int(c1 / ptSize / 2), 100, 82);
 
-  text("Angle 1 " + d1, 100, 102);
-  text("Angle 2 " + d2, 100, 122);
-  text("Shear " + shrX,100,142);
+//  if(windowWidth>500){
+    text("Stroke Width  " + int(ax / ptSize / 2), 100, 22);
+    text("X-Height " + int(ay / ptSize / 5), 100, 42);
+    text("Angle 1 " + d1, 100, 62);
+    text("Angle 2 " + d2, 100, 82);
 
-  text("Ascender  " + int(asc / ptSize / 2), 290, 22);
-  text("Descender  " + int(desc / ptSize / 2), 290, 42);
-  text("Tail  " + int(tail / ptSize), 290, 62);
-  text("Flag  " + int(flag / ptSize), 290, 82);
-  text("Overlap  " + int(lap*100), 290, 102);
-  text("Tracking  " + track, 290, 122);
-  text("Leading  " + lead, 290, 142);
+    text("Arc " + int(c1 / ptSize / 2), windowWidth/5 + 100, 22);    
+    text("Arc Two " + sliderX2.value(), windowWidth/5 + 100, 42);
+    text("Arc Two Width " + sliderC2.value(), windowWidth/5 + 100, 62);  
+    
+    text("Overlap  " + int(lap*100), 2*windowWidth/5 + 100, 22);
+    text("Ascender  " + int(asc / ptSize / 2), 2*windowWidth/5 + 100, 42);
+    text("Descender  " + int(desc / ptSize / 2), 2*windowWidth/5 + 100, 62);
+  
+    text("Size  " + ptSize * 20, 3*windowWidth/5 + 100, 22);
+    text("Tracking  " + int(tracking), 3*windowWidth/5 + 100, 42);
+    text("Leading  " + lead, 3*windowWidth/5 + 100, 62);
+    text("Shear " + shrX, 3*windowWidth/5 + 100, 82);
 
+    
+/*  } else {
+    text("Stroke Width  " + int(ax / ptSize / 2), 10, 40);
+    text("X-Height " + int(ay / ptSize / 5), 10, 80);
+    text("Arc " + int(c1 / ptSize / 2), 10, 120);
+  
+    text("Angle 1 " + d1,10,160);
+    text("Angle 2 " + d2, 10,200);
+    text("Shear " + shrX, 10,240);
+  
+    text("Overlap  " + int(lap*100), 10, 280);
+    text("Ascender  " + int(asc / ptSize / 2), 10, 320);
+    text("Descender  " + int(desc / ptSize / 2), 10, 360);
+  
+    text("Size  " + ptSize * 20, 10, 440);
+    text("Tracking  " + int(tracking), 10, 480);
+    text("Leading  " + lead, 10, 520);
+  }
+*/
+    
   divX1 = sin(d2)*c1;
   divY1 = cos(d2)*c1;
   divY2 = tan(d1)*ax;
+    
+  divX2 = sin(d2)*c2;
+  divY3 = tan(d1)*bx;
+  divY4 = cos(d2)*c2;
 
   // figure out tracking
-  track += ax + divX1 - lap*ax;
+  track = ax + divX1 - lap*ax;
   lead += asc + ay + 2*divY1 + 2*divY2;
   
   inpText = String(inp.value());  
+
+  for (var i = 0; i < inpText.length; i++) {
+    if (inpText.charAt(i) === '\n') {
+      lb_count++;
+    }
+  }
+
+    push();
+
+    translate(xStart, yStart - (lb_count*lead)/2);
   
-  push();
-    // center
-    // translate(width/2 -((inpText.length) * track - track) / 2, height/2 + ay/ 2 +asc/2);
-    translate(width/2, height/2);
-  
-    fill(255);
+  noStroke();
+  fill(0);
   
     for (var i = 0; i < inpText.length; i++) {
       if (inpText.charAt(i) === 'a') {
@@ -288,8 +416,15 @@ function draw() {
         period();
       } else if (inpText.charAt(i) === ',') {
         comma();
+      } else if (inpText.charAt(i) === '!') {
+        exclaim();
+      } else if (inpText.charAt(i) === '?') {
+        question();
+      } else if (inpText.charAt(i) === '&') {
+        amp();
       } else if (inpText.charAt(i) === '\n') {
         trackCount = 0;
+        trackingCount=0;
 //        translate(-((inpText.length) * track - track) / 2, asc+ay+20);
         translate(0, lead);
       } else if (inpText.charAt(i) === ' ') {
@@ -297,6 +432,8 @@ function draw() {
       }
     }
   pop();
+
+    
 }
 
 /*
@@ -309,9 +446,51 @@ function keyPressed() {
 
 function saveSvg() {
   clear();
+
+
+  ax = ptSize * sliderX1.value();
+  ay = ptSize * sliderY1.value();
+  c1 = ptSize * sliderC1.value();
+
+  d1 = sliderD1.value();
+  d2 = sliderD2.value();
+
+  shrX = sliderShearX.value();
+
+  asc = ptSize * sliderAsc.value() * 2;
+  desc = ptSize * sliderDesc.value() * 2;
+//  tail = ptSize * sliderTail.value();
+
+  lap = sliderLap.value()/100;
+
+  tracking = sliderTrack.value();
+  lead = sliderLead.value();
+  ptSize = sliderSize.value() / 20;
+
+  trackCount = 0;
+  trackingCount = 0;
+  lb_count = 0;
+
+  divX1 = sin(d2)*c1;
+  divY1 = cos(d2)*c1;
+  divY2 = tan(d1)*ax;
+
+  // figure out tracking
+  track = ax + divX1 - lap*ax;
+  lead += asc + ay + 2*divY1 + 2*divY2;
   
+
+  for (var i = 0; i < inpText.length; i++) {
+    if (inpText.charAt(i) === '\n') {
+      lb_count++;
+    }
+  }
+    
   push();
-    translate(width/2 -((inpText.length) * track - track) / 2, height/2 + ay/ 2);  
+
+    translate(xStart, yStart-(lb_count*lead)/2);
+  
+    noStroke();
     fill(0);
   
     for (var i = 0; i < inpText.length; i++) {
@@ -423,8 +602,19 @@ function saveSvg() {
         period();
       } else if (inpText.charAt(i) === ',') {
         comma();
+      } else if (inpText.charAt(i) === '!') {
+        exclaim();
+      } else if (inpText.charAt(i) === '?') {
+        question();
+      } else if (inpText.charAt(i) === '&') {
+        amp();
+      } else if (inpText.charAt(i) === '\n') {
+        trackCount = 0;
+        trackingCount=0;
+//        translate(-((inpText.length) * track - track) / 2, asc+ay+20);
+        translate(0, lead);
       } else if (inpText.charAt(i) === ' ') {
-        translate(track - ax, 0);
+        trackCount+=1;
       }
     }
   pop();
@@ -432,6 +622,15 @@ function saveSvg() {
   save();
 }
 
+
+/*
+function mouseDragged() {
+  if(mouseX <= xStart-40 && mouseX >= xStart-60 && mouseY <= yStart+60 && mouseY >= yStart+40){
+    xStart = mouseX + 50;
+    yStart = mouseY -50;
+  }
+}
+*/
 
 //function keyTyped() {
 //  myText.push(key);

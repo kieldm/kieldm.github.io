@@ -15,6 +15,30 @@ function D() {
       vertex(0,divY2);
       vertex(0,0);
       endShape();
+
+      //bar
+      push();
+        translate(divX1, divY1 + divY2);
+            beginShape();
+            vertex(0,0);
+            vertex(bx, -divY3);
+            vertex(bx - divX2, -divY3 - divY4);
+            vertex(-divX2, - divY4);
+            vertex(0,0);
+            endShape();
+      pop();
+
+          //bar
+      push();
+        translate(0, -ay);
+            beginShape();
+            vertex(0,0);
+            vertex(divX2, divY4);
+            vertex(bx + divX2, divY4 - divY3);
+            vertex(bx, -divY3);
+            vertex(0,0);
+            endShape();
+      pop();
     
       push();
         translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1   + (lap*divY2));
@@ -34,8 +58,8 @@ function D() {
         if(-asc+2*divY2-divY1 < divY2-(ax/2+divX1)/tan(d2)) {
               vertex(-1.5*ax-divX1, -asc+2*divY2-divY1);
               
-              vertex(-1.5*ax-divX1-sin(d2)*flag, -asc+2*divY2-divY1-cos(d2)*flag);
-              vertex(-.5*ax-divX1-sin(d2)*flag, -asc+divY2-divY1-cos(d2)*flag);
+              vertex(-1.5*ax-divX1-divX1/2, -asc+2*divY2-divY1-divY1/2);
+              vertex(-.5*ax-divX1-divX1/2, -asc+divY2-divY1-divY1/2);
               
               vertex(-ax/2-divX1, -asc+divY2-divY1);
         }
@@ -44,6 +68,8 @@ function D() {
     
         vertex(0, 0);
         endShape();
+      
+    
       pop();
   
     pop();

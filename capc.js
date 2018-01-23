@@ -15,7 +15,18 @@ function capC() {
       vertex(0,divY2);
       vertex(0,0);
       endShape();
-    
+
+      //bar
+      push();
+        translate(divX1, divY1 + divY2);
+        beginShape();
+        vertex(0,0);
+        vertex(bx, -divY3);
+        vertex(bx - divX2, -divY3 - divY4);
+        vertex(-divX2, - divY4);
+        vertex(0,0);
+        endShape();
+      pop();
       
       push();
         translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1 - asc + (lap*divY2));
@@ -38,7 +49,19 @@ function capC() {
         vertex(-ax, asc+ay/2 + divY2);
         vertex(0,asc+ay/2);
         endShape();
-  
+
+         //bar
+         push();
+         translate(-divX1, -divY1);
+            beginShape();
+            vertex(0,0);
+            vertex(-bx, divY3);
+            vertex(-bx + divX2, divY3 + divY4);
+            vertex(divX2, divY4);
+            vertex(0,0);
+            endShape();
+         pop();
+    
         //decor
         /*
         beginShape();
