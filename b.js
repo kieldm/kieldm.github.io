@@ -7,11 +7,21 @@ function B() {
     
       beginShape();
       vertex(0, 0);
-      vertex(0, -ay - asc);
-      vertex(-divX1/2, -ay - asc - divY1/2);
-      vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
+      
+      if(radioTop.value() == 2){
+          vertex(0, -ay - asc - divY1/2 - divY2);
+          vertex(ax, -ay - asc - divY1/2 - divY2);
+        } else if(radioTop.value() == 3){
+          vertex(0, -ay - asc - divY1/2);
+          vertex(ax, -ay - asc - divY1/2 - divY2);
+        } else {
+          vertex(0, -ay - asc);
+          vertex(-divX1/2, -ay - asc - divY1/2);
+          vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
+          vertex(ax, -ay - asc - divY2);
+        }
     
-      vertex(ax, -ay - asc - divY2);
+
       vertex(ax, 0);
       vertex(ax + divX1, divY1);
       vertex(divX1, divY1 + divY2);

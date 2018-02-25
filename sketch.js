@@ -15,6 +15,10 @@ var divX2, divY3, divY4;
 var sliderD1, sliderD2;
 var d1, d2;
 
+// buttons
+var radioTop;
+var radioBottom;
+
 //specs
 var sliderAsc, sliderDesc, sliderTail;
 var asc, desc, tail;
@@ -93,10 +97,14 @@ function setup() {
       sliderD2.position(10, 70);
       sliderD2.style('width', '80px');
     
-    
-      sliderC1 = createSlider(0, 200, 50);
-      sliderC1.position(windowWidth/5 + 10, 10);
+      sliderC1 = createSlider(0, 200, 100);
+      sliderC1.position(10, 90);
       sliderC1.style('width', '80px');
+
+
+      sliderLap = createSlider(-100, 100, 0);
+      sliderLap.position(windowWidth/5 + 10, 10);
+      sliderLap.style('width', '80px');    
     
       sliderX2 = createSlider(0, 100, 0);
       sliderX2.position(windowWidth/5 + 10, 30);
@@ -106,19 +114,29 @@ function setup() {
       sliderC2.position(windowWidth/5 + 10, 50);
       sliderC2.style('width', '80px');
     
-    
-      sliderLap = createSlider(-100, 100, 0);
-      sliderLap.position(2*windowWidth/5 + 10, 10);
-      sliderLap.style('width', '80px');
-    
       sliderAsc = createSlider(0, 200, 50);
-      sliderAsc.position(2*windowWidth/5 + 10, 30);
+      sliderAsc.position(windowWidth/5 + 10, 70);
       sliderAsc.style('width', '80px');
     
       sliderDesc = createSlider(0, 200, 50);
-      sliderDesc.position(2*windowWidth/5 + 10, 50);
+      sliderDesc.position(windowWidth/5 + 10, 90);
       sliderDesc.style('width', '80px');
+
+      radioTop = createRadio();
+      radioTop.position(2*windowWidth/5,27);
+      radioTop.option(' ',1);
+      radioTop.option(' ',2);
+      radioTop.option(' ',3);
+      radioTop.style('width','20px');
+      radioTop.value(1).checked = true;
     
+      radioBottom = createRadio();
+      radioBottom.position(2*windowWidth/5+70,27);
+      radioBottom.option(' ',1);
+      radioBottom.option(' ',2);
+      radioBottom.option(' ',3);
+      radioBottom.style('width','20px');
+      radioBottom.value(1).checked = true;
     
       sliderSize = createSlider(0, 20, 10);
       sliderSize.position(3*windowWidth/5 + 10, 10);
@@ -140,8 +158,7 @@ function setup() {
       saveButton = createButton('Save SVG');
       saveButton.position(4*windowWidth/5 + 10, 10);
       saveButton.mousePressed(saveSvg);
-  
-  
+    
 /*    } else {
       sliderX1 = createSlider(0, 200, 25);
       sliderX1.position(10, 10);
@@ -204,7 +221,7 @@ function setup() {
 
 function draw() {
   clear();
-  
+
 //  background(0);
   background(255);
 
@@ -212,16 +229,24 @@ function draw() {
 
   ax = ptSize * sliderX1.value();
   ay = ptSize * sliderY1.value();
-  c1 = ptSize * sliderC1.value();
-
+//  c1 = ptSize * sliderC1.value();
+  c1 = map(sliderC1.value(), 0, 100, 0, ax);
+    
   d1 = sliderD1.value();
   d2 = sliderD2.value();
 
+  divX1 = sin(d2)*c1;
+  divY1 = cos(d2)*c1;
+  divY2 = tan(d1)*ax;
+    
+  divX2 = sin(d2)*c2;
+  divY3 = tan(d1)*bx;
+  divY4 = cos(d2)*c2;    
     
   shrX = sliderShearX.value();
 
-  asc = ptSize * sliderAsc.value() * 2;
-  desc = ptSize * sliderDesc.value() * 2;
+  asc = ptSize * sliderAsc.value()+divY1;
+  desc = ptSize * sliderDesc.value()+divY1;
 //  tail = ptSize * sliderTail.value();
 
   lap = sliderLap.value()/100;
@@ -246,21 +271,33 @@ function draw() {
     text("X-Height " + int(ay / ptSize / 5), 100, 42);
     text("Angle 1 " + d1, 100, 62);
     text("Angle 2 " + d2, 100, 82);
+    text("Arc " + int(c1 / ptSize / 2), 100, 102);    
 
-    text("Arc " + int(c1 / ptSize / 2), windowWidth/5 + 100, 22);    
+    text("Overlap  " + int(lap*100), windowWidth/5 + 100, 22);
     text("Arc Two " + sliderX2.value(), windowWidth/5 + 100, 42);
     text("Arc Two Width " + sliderC2.value(), windowWidth/5 + 100, 62);  
+    text("Ascender  " + int(asc / ptSize / 2), windowWidth/5 + 100, 82);
+    text("Descender  " + int(desc / ptSize / 2), windowWidth/5 + 100, 102);
+
+    textStyle(BOLD);
+    text("Top Terminals",2*windowWidth/5, 22);
+    text("Bottom Terminals",2*windowWidth/5+70, 22);
     
-    text("Overlap  " + int(lap*100), 2*windowWidth/5 + 100, 22);
-    text("Ascender  " + int(asc / ptSize / 2), 2*windowWidth/5 + 100, 42);
-    text("Descender  " + int(desc / ptSize / 2), 2*windowWidth/5 + 100, 62);
-  
+    textStyle(NORMAL);
+    text("Variable",2*windowWidth/5+20, 39);
+    text("Flat",2*windowWidth/5+20, 59);
+    text("None",2*windowWidth/5+20, 79);
+
+    text("Variable",2*windowWidth/5+90, 39);
+    text("Flat",2*windowWidth/5+90, 59);
+    text("None",2*windowWidth/5+90, 79);
+    
     text("Size  " + ptSize * 20, 3*windowWidth/5 + 100, 22);
     text("Tracking  " + int(tracking), 3*windowWidth/5 + 100, 42);
     text("Leading  " + lead, 3*windowWidth/5 + 100, 62);
     text("Shear " + shrX, 3*windowWidth/5 + 100, 82);
 
-    
+
 /*  } else {
     text("Stroke Width  " + int(ax / ptSize / 2), 10, 40);
     text("X-Height " + int(ay / ptSize / 5), 10, 80);
@@ -280,13 +317,7 @@ function draw() {
   }
 */
     
-  divX1 = sin(d2)*c1;
-  divY1 = cos(d2)*c1;
-  divY2 = tan(d1)*ax;
-    
-  divX2 = sin(d2)*c2;
-  divY3 = tan(d1)*bx;
-  divY4 = cos(d2)*c2;
+
 
   // figure out tracking
   track = ax + divX1 - lap*ax;
@@ -450,19 +481,31 @@ function saveSvg() {
 
   ax = ptSize * sliderX1.value();
   ay = ptSize * sliderY1.value();
-  c1 = ptSize * sliderC1.value();
-
+//  c1 = ptSize * sliderC1.value();
+  c1 = map(sliderC1.value(), 0, 100, 0, ax);
+    
   d1 = sliderD1.value();
   d2 = sliderD2.value();
 
+  divX1 = sin(d2)*c1;
+  divY1 = cos(d2)*c1;
+  divY2 = tan(d1)*ax;
+    
+  divX2 = sin(d2)*c2;
+  divY3 = tan(d1)*bx;
+  divY4 = cos(d2)*c2;    
+    
   shrX = sliderShearX.value();
 
-  asc = ptSize * sliderAsc.value() * 2;
-  desc = ptSize * sliderDesc.value() * 2;
+  asc = ptSize * sliderAsc.value()+divY1;
+  desc = ptSize * sliderDesc.value()+divY1;
 //  tail = ptSize * sliderTail.value();
 
   lap = sliderLap.value()/100;
 
+  bx = map(sliderX2.value(), 0, 100, ax, -(lap*ax) + 2*ax);
+  c2 = map(sliderC2.value(), 0, 100, 0, c1);
+    
   tracking = sliderTrack.value();
   lead = sliderLead.value();
   ptSize = sliderSize.value() / 20;
@@ -470,10 +513,6 @@ function saveSvg() {
   trackCount = 0;
   trackingCount = 0;
   lb_count = 0;
-
-  divX1 = sin(d2)*c1;
-  divY1 = cos(d2)*c1;
-  divY2 = tan(d1)*ax;
 
   // figure out tracking
   track = ax + divX1 - lap*ax;
@@ -487,7 +526,6 @@ function saveSvg() {
   }
     
   push();
-
     translate(xStart, yStart-(lb_count*lead)/2);
   
     noStroke();
