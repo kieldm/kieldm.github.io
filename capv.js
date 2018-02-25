@@ -11,8 +11,8 @@ function capV() {
           vertex(0, -ay - asc - 2*divY2 + (lap*divY2));
           vertex(ax, -ay - asc - 2*divY2 + (lap*divY2));
       } else {
-          vertex(0, -ay - asc - divY2 - (lap*divY2));
-          vertex(ax, -ay - asc - 2*divY2 - (lap*divY2));
+          vertex(0, -ay - asc - divY2);
+          vertex(ax, -ay - asc - 2*divY2);
       }
     
       vertex(ax, 0);
@@ -35,7 +35,7 @@ function capV() {
       pop();
     
       push();
-        translate( ax + divX1 - (lap*ax), 0);
+        translate( ax + divX1 - (lap*ax), (lap*divY2));
       
         beginShape();
         vertex(0, 0);
@@ -44,8 +44,8 @@ function capV() {
               vertex(0, -ay - asc - 2*divY2 + (lap*divY2));
               vertex(ax, -ay - asc - 2*divY2 + (lap*divY2));
           } else {
-              vertex(0, -ay - asc - divY2 - (lap*divY2));
-              vertex(ax, -ay - asc - 2*divY2 - (lap*divY2));
+              vertex(0, -ay - asc - divY2);
+              vertex(ax, -ay - asc - 2*divY2);
           }
     
         vertex(ax,- divY2 + divY1);
