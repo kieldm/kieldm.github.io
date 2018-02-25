@@ -6,9 +6,15 @@ function capV() {
     
       beginShape();
       vertex(0, 0);
-      vertex(0, -ay - asc - divY2);
+
+      if(radioTop.value() == 2){
+          vertex(0, -ay - asc - 2*divY2 + (lap*divY2));
+          vertex(ax, -ay - asc - 2*divY2 + (lap*divY2));
+      } else {
+          vertex(0, -ay - asc - divY2 - (lap*divY2));
+          vertex(ax, -ay - asc - 2*divY2 - (lap*divY2));
+      }
     
-      vertex(ax, -ay - asc - 2*divY2);
       vertex(ax, 0);
       vertex(ax + divX1, divY1);
       vertex(divX1, divY1 + divY2);
@@ -33,9 +39,15 @@ function capV() {
       
         beginShape();
         vertex(0, 0);
-        vertex(0, -ay - asc - divY2);
-      
-        vertex(ax, -ay - asc - 2*divY2);
+    
+          if(radioTop.value() == 2){
+              vertex(0, -ay - asc - 2*divY2 + (lap*divY2));
+              vertex(ax, -ay - asc - 2*divY2 + (lap*divY2));
+          } else {
+              vertex(0, -ay - asc - divY2 - (lap*divY2));
+              vertex(ax, -ay - asc - 2*divY2 - (lap*divY2));
+          }
+    
         vertex(ax,- divY2 + divY1);
         vertex(0,divY2 - divY2 + divY1);
         vertex(0,0);

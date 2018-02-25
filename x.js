@@ -22,20 +22,33 @@ function X() {
         vertex(2*ax + divX1,     -(-divY2 + (ax+divX1)/tan(d2))/2 - divY2 + (ax+divX1)/tan(d2));
         
   //      if( (-(-ay-2*divY2+divY1)/2+divY1-2*divY2) > -(-divY2 + (ax+divX1)/tan(d2))/2-divY2 + (ax+divX1)/tan(d2) ){
+        if(radioBottom.value() == 2){
+          vertex(2*ax+divX1,-(-ay-2*divY2 + divY1)/2 + divY1 + divY2);
+          vertex(ax + divX1,-(-ay-2*divY2+divY1)/2 + divY1 + divY2);
+        } else {
           vertex(2*ax+divX1,-(-ay-2*divY2 + divY1)/2+divY1);
           vertex(ax + divX1,-(-ay-2*divY2+divY1)/2+divY1+divY2);
+        }
   //      }
         
         vertex(ax+divX1,         -(-divY2 + (ax+divX1)/tan(d2))/2+(ax+divX1)/tan(d2));
         
         vertex(0,                       -(-divY2 + (ax+divX1)/tan(d2))/2);
         endShape();
-        
+                
         beginShape();
+    
         vertex(ax,0);
         vertex(0,divY2);
-        vertex(0,-(-ay-2*divY2+divY1)/2+divY1+divY2);
-        vertex(ax,-(-ay-2*divY2+divY1)/2+divY1);
+    
+        if(radioBottom.value() == 2){
+            vertex(0,-(-ay-2*divY2+divY1)/2+divY1+divY2);
+            vertex(ax,-(-ay-2*divY2+divY1)/2+divY1+divY2);
+        } else {
+            vertex(0,-(-ay-2*divY2+divY1)/2+divY1+divY2);
+            vertex(ax,-(-ay-2*divY2+divY1)/2+divY1);
+        }
+    
         vertex(ax,0);
         endShape();
         

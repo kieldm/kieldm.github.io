@@ -13,10 +13,21 @@ function capT() {
       vertex(-divX1 + ax, -ay - asc - 2*divY2      + ax);
       vertex(ax,    -ay - asc - 2*divY2 + divY1    + ax);
     
-      vertex(ax, divY1/2);
-      vertex(ax + divX1/2, divY1);
-      vertex(divX1/2, divY1+divY2);
-      vertex(0,divY1/2 + divY2);
+        if(radioBottom.value() == 2){
+          vertex(ax, divY1+divY2);
+          vertex(0, divY1+divY2);
+        } else if(radioBottom.value() == 3){
+          vertex(ax, divY1);
+          vertex(0, divY1+divY2);
+        } else {
+          vertex(ax, divY1/2);
+          vertex(ax + divX1/2, divY1);
+          vertex(divX1/2, divY1+divY2);
+          vertex(0,divY1/2 + divY2);
+        }
+    
+
+      
       vertex(0, 0);
       endShape();
   

@@ -7,17 +7,33 @@ function K() {
     
       beginShape();
       vertex(0, 0);
-      vertex(0, -ay - asc);
+    
+      if(radioTop.value() == 2){
+          vertex(0, -ay - asc - divY1/2 - divY2);
+          vertex(ax, -ay - asc - divY1/2 - divY2);
+        } else if(radioTop.value() == 3){
+          vertex(0, -ay - asc - divY1/2);
+          vertex(ax, -ay - asc - divY1/2 - divY2);
+        } else {
+          vertex(0, -ay - asc);
+          vertex(-divX1/2, -ay - asc - divY1/2);
+          vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2); 
+          vertex(ax, -ay - asc - divY2);
+        }
       
-      vertex(-divX1/2, -ay - asc - divY1/2);
-      vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
+        if(radioBottom.value() == 2){
+            vertex(ax,divY1+divY2);
+            vertex(0,divY1+divY2);
+        } else if(radioBottom.value() == 3){
+            vertex(ax,divY1);
+            vertex(0,divY1+divY2);
+        } else {
+            vertex(ax, divY1/2);
+            vertex(ax + divX1/2, divY1);
+            vertex(divX1/2, divY1+divY2);
+            vertex(0,divY1/2 + divY2);
+        }
       
-      vertex(ax, -ay - asc - divY2);
-      
-      vertex(ax, divY1/2);
-      vertex(ax + divX1/2, divY1);
-      vertex(divX1/2, divY1+divY2);
-      vertex(0,divY1/2 + divY2);
       vertex(0, 0);
       endShape();
       
@@ -44,10 +60,23 @@ function K() {
         vertex(-divX1-ax, 2*ay/3 - divY1 + divY2);
         vertex(-divX1, 2*ay/3 - divY1);
         vertex(0, 2*ay/3);
-        vertex(0, ay - divY1/2 +  2 * divY2  - (lap*divY2));
-        vertex(divX1/2, ay + 2*divY2 - (lap*divY2));
-        vertex(divX1/2 - ax, ay +  3 * divY2 - (lap*divY2));
-        vertex(-ax,ay +  3 * divY2 - divY1/2 - (lap*divY2));
+    
+    
+        if(radioBottom.value() == 2){
+            vertex(0, ay +  3 * divY2 - (lap*divY2));
+            vertex(-ax, ay +  3 * divY2 - (lap*divY2));
+        } else if(radioBottom.value() == 3){
+            vertex(0, ay +  2 * divY2 - (lap*divY2));
+            vertex(-ax, ay +  3 * divY2 - (lap*divY2));
+        } else {
+            vertex(0, ay - divY1/2 +  2 * divY2  - (lap*divY2));
+            vertex(divX1/2, ay + 2*divY2 - (lap*divY2));
+            vertex(divX1/2 - ax, ay +  3 * divY2 - (lap*divY2));
+            vertex(-ax,ay +  3 * divY2 - divY1/2 - (lap*divY2));
+        }
+    
+
+        
         vertex(-ax, 2*ay/3+divY2);
         endShape();
 

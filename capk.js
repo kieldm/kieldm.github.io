@@ -6,29 +6,55 @@ function capK() {
     
       beginShape();
       vertex(0, 0);
-      vertex(0, -ay - asc);
-      vertex(-divX1/2, -ay - asc - divY1/2);
-      vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
     
-      vertex(ax, -ay - asc - divY2);
+      if(radioTop.value() == 2){
+          vertex(0, -ay - asc - 2*divY2);
+          vertex(ax, -ay - asc - 2*divY2);
+        } else if(radioTop.value() == 3){
+          vertex(0, -ay - asc - 2*divY2 + divY1);
+          vertex(ax, -ay - asc - 2*divY2);
+        } else {
+          vertex(0, -ay - asc);
+          vertex(-divX1/2, -ay - asc - divY1/2);
+          vertex(-divX1/2 + ax, -ay - asc - divY1/2 - divY2);
+          vertex(ax, -ay - asc - divY2);
+        }
   
-      vertex(ax, divY1/2);
-      vertex(ax + divX1/2, divY1);
-      vertex(divX1/2, divY1+divY2);
-      vertex(0,divY1/2 + divY2);
+        if(radioBottom.value() == 2){
+            vertex(ax,divY1+divY2);
+            vertex(0,divY1+divY2);
+        } else if(radioBottom.value() == 3){
+            vertex(ax,divY1);
+            vertex(0,divY1+divY2);
+        } else {
+            vertex(ax, divY1/2);
+            vertex(ax + divX1/2, divY1);
+            vertex(divX1/2, divY1+divY2);
+            vertex(0,divY1/2 + divY2);
+        }
+    
       vertex(0, 0);
       endShape();
     
       push();
-        translate(2 * ax + divX1 - (lap*ax), -ay - 2 * divY2 + divY1 + (lap*divY2));
+        translate(2*ax + divX1 - (lap*ax), -ay - 2*divY2 + divY1 + (lap*divY2));
       
         beginShape();
         vertex(0, 0);
-        vertex(0, ay - divY1/2 +  2 * divY2  - (lap*divY2));
-        vertex(divX1/2, ay + 2*divY2 - (lap*divY2));
-        vertex(divX1/2 - ax, ay +  3 * divY2 - (lap*divY2));
-        vertex(-ax,ay +  3 * divY2 - divY1/2 - (lap*divY2));
     
+        if(radioBottom.value() == 2){
+            vertex(0, ay +  3 * divY2 - (lap*divY2));
+            vertex(-ax, ay +  3 * divY2 - (lap*divY2));
+        } else if(radioBottom.value() == 3){
+            vertex(0, ay +  2*divY2 - (lap*divY2));
+            vertex(-ax, ay +  3*divY2 - (lap*divY2));
+        } else {
+            vertex(0, ay - divY1/2 +  2 * divY2  - (lap*divY2));
+            vertex(divX1/2, ay + 2*divY2 - (lap*divY2));
+            vertex(divX1/2 - ax, ay +  3 * divY2 - (lap*divY2));
+            vertex(-ax,ay +  3 * divY2 - divY1/2 - (lap*divY2));
+        }
+
         vertex(-ax, divY2);
         vertex(-ax - divX1, divY2 - divY1);
         vertex(-divX1,-divY1);
@@ -51,7 +77,6 @@ function capK() {
           translate(0, -asc);
   
           beginShape();
-  //        vertex(0, 0);
           
           if(divX1>ax){
             vertex(0,  asc - ax/tan(d2) - divY2+2);
@@ -60,12 +85,15 @@ function capK() {
             vertex(0,  asc - divY1 + tan(d1)*(ax-divX1) - divY2+2);
             vertex(-ax, asc - divY1 + tan(d1)*(ax-divX1)+2);
           }
-  //        vertex(-ax, divY2);
-          
-          vertex(-ax, -ay + ay + divY2 - divY1 - (lap*divY2));
-          vertex(0, -ay + ay - divY1 - (lap*divY2));
+    
+            if(radioTop.value() == 2){
+              vertex(-ax, - divY1 - (lap*divY2));
+              vertex(0, - divY1 - (lap*divY2));
+            } else {
+              vertex(-ax, divY2 - divY1 - (lap*divY2));
+              vertex(0, - divY1 - (lap*divY2));
+            }
   
-  //        vertex(0,0);
           endShape();
         
         pop();
